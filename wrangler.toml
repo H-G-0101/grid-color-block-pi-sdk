@@ -1,0 +1,15 @@
+name = "gridcolorblock"
+main = "_worker.js"
+compatibility_date = "2025-01-01"
+
+# Serve os arquivos estaticos do jogo (index.html, bundle, img, audio...)
+# atraves do binding env.ASSETS. O _worker.js intercepta /api/pi-* e passa
+# todo o resto para ASSETS.fetch().
+[assets]
+directory = "."
+binding = "ASSETS"
+
+# A chave do Pi NAO vai aqui. Configure como Secret no painel:
+#   Workers & Pages -> seu projeto -> Settings -> Variables and Secrets
+#   Nome: PI_API_KEY   Tipo: Secret
+# ou via CLI:  npx wrangler secret put PI_API_KEY

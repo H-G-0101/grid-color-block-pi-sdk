@@ -1,0 +1,51 @@
+COLOR BLOCKS — BUILD DE ESTUDO (offline)
+========================================
+
+O que foi feito
+---------------
+O projeto original era uma captura de um portal de jogos HTML5 e nao rodava:
+- os caminhos dos assets estavam quebrados (img/data/audio/font espalhados);
+- o jogo dependia do SDK externo de anuncios (uma rede de anuncios externa (varios SDKs)).
+
+Esta versao roda 100% offline, sem internet:
+- estrutura de pastas refeita no layout que o bundle espera (./img, ./data,
+  ./audio, ./font);
+- PUBLICIDADE TOTALMENTE DESLIGADA: nenhuma rede de anuncio (rede de anuncios externa,
+  SDKs de anuncio e analytics) e carregada ou contatada. Anuncio
+  recompensado concede a recompensa na hora; intersticial e pulado. Ver no-ads.js;
+- chamadas de analytics externas sao silenciadas (sem erro de rede no console).
+
+Como rodar
+----------
+IMPORTANTE: precisa ser servido por HTTP (abrir o index.html direto pelo
+file:// NAO funciona, porque o Phaser carrega JSON/atlas via requisicao).
+
+Opcao 1 — Python (mais simples):
+    cd color_blocks_study
+    python3 -m http.server 8000
+    # abra no navegador: http://localhost:8000
+
+Opcao 2 — Node:
+    cd color_blocks_study
+    npx serve -l 8000
+    # abra no navegador: http://localhost:8000
+
+Opcao 3 — VS Code:
+    extensao "Live Server" -> botao direito no index.html -> Open with Live Server
+
+Estrutura
+---------
+  index.html                  pagina (carrega o stub + o bundle, sem SDK externo)
+  no-ads.js              desliga toda a publicidade (so estudo)
+  bundle.<hash>.min.js        codigo do jogo (Phaser, inalterado)
+  img/                        loader, fundos e atlas (main/tiles/fx + .png)
+  data/                       niveis, idiomas e configuracoes (.json)
+  audio/                      efeitos e musica (.mp3)
+  font/                       fonte do jogo (font.css + woff2)
+
+Observacoes
+-----------
+- A tela de LOJA (shop) usa "offers.json" / "shop/Items.json", que NAO vieram
+  na captura. O nucleo do jogo (jogar os niveis) funciona normal; so a vitrine
+  de ofertas pode aparecer vazia ou logar um 404 — nao trava o jogo.
+- Para trocar o comportamento dos anuncios, edite no-ads.js.
