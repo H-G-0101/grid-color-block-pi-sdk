@@ -1,0 +1,10 @@
+name = "grid-color-block-pi-sdk"
+main = "_worker.js"
+compatibility_date = "2025-01-01"
+
+# Assets do jogo numa subpasta separada do _worker.js, pra o Cloudflare
+# reconhecer que ha CODIGO (main) + assets — e nao "so static assets".
+# E o que faz o painel aceitar o Secret PI_API_KEY.
+[assets]
+directory = "./public"
+binding = "ASSETS"
