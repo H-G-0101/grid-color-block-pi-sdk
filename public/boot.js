@@ -21,8 +21,14 @@
      roleta -> concede direto, modais hard -> Pi), entao aqui basta um no-op
      que resolve, pra apiInit nativa nao ficar sem objeto. */
   if (!window.appads) {
+    // showAd dispara "game-ad-end" no fim, pra liberar qualquer wait-loader
+    // do jogo que espere o termino de um anuncio (sem isso, o loader entre
+    // fases girava pra sempre, ja que nao ha mais anuncio de verdade).
+    var fireAdEnd = function () {
+      try { window.dispatchEvent(new Event("game-ad-end")); } catch (e) {}
+    };
     var noop = {
-      showAd: function () { return Promise.resolve(); },
+      showAd: function () { setTimeout(fireAdEnd, 0); return Promise.resolve(); },
       preloadAd: function () {},
       showBanner: function () {},
       hideBanner: function () {}
