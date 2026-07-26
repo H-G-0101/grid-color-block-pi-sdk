@@ -60,14 +60,14 @@ var COINSHOP_PACKS = [
     if (adLoadEl) return adLoadEl;
     adLoadEl = document.createElement('div');
     adLoadEl.id = 'csAdLoading';
-    adLoadEl.innerHTML = '<div class="sp"></div><div class="t">Loading ad&hellip;</div><div class="s" id="csAdSub"></div>';
+    adLoadEl.innerHTML = '<div class="sp"></div><div class="t">Loading&hellip;</div><div class="s" id="csAdSub"></div>';
     document.body.appendChild(adLoadEl);
     return adLoadEl;
   }
   function showAdLoading() {
     ensureAdLoading();
     var sub = document.getElementById('csAdSub');
-    if (sub) sub.textContent = 'Processing payment...';
+    if (sub) sub.textContent = '';
     adLoadEl.style.display = 'flex';
     adLoadShownAt = Date.now();
   }
