@@ -64,9 +64,8 @@
 
       // botoes Claim / Continue
       '<div style="display:flex; gap:10px; margin-top:16px;">' +
-        '<button class="mm-btn" onclick="window.__lcWin._claim()" style="flex:1;">' +
-          '<svg width="30" height="30" viewBox="0 0 48 48" style="display:block;"><g transform="rotate(-8 24 30)"><rect x="7" y="19" width="34" height="21" rx="3" fill="#fff"></rect><circle cx="15" cy="30" r="6" fill="none" stroke="#3cb52c" stroke-width="2.4"></circle><path d="M15 26.5v7M11.5 30h7" stroke="#3cb52c" stroke-width="2.4" stroke-linecap="round"></path></g><g transform="rotate(-20 24 15)"><rect x="6" y="9" width="36" height="11" rx="2.5" fill="#2b2b2b"></rect><path d="M11 9l4 11M19 9l4 11M27 9l4 11M35 9l4 11" stroke="#fff" stroke-width="3.2"></path></g></svg>' +
-          '<span class="amt">Claim</span>' +
+        '<button class="mm-btn" disabled style="flex:1; opacity:.45; filter:grayscale(1); cursor:default; box-shadow:none;">' +
+          '<span class="amt">Soon</span>' +
         '</button>' +
         '<button class="mm-btn amber" onclick="window.__lcWin._continue()" style="flex:1;"><span class="amt">Next</span></button>' +
       '</div>' +
